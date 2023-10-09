@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verification</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <h2>Age Verification</h2>
+        <form method="POST" action="verify.php">
+            <label for="age">Enter your age:</label>
+            <input type="number" id="age" name="age" required>
+            <br><br>
+            <input type="submit" value="Verify">
+        </form>
+    </div>
+</body>
+</html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the user's age from the form data
+    $userAge = $_POST["age"];
+
+    // Define the minimum age for access
+    $minimumAge = 18;
+
+    // Check if the user's age meets the minimum age requirement
+    if ($userAge >= $minimumAge) {
+        // User is eligible, display content
+        echo "<h2>Welcome to the Website!</h2>";
+    } else {
+        // User is not eligible, display a message
+        echo "<h2>Sorry, you are not old enough to access this website.</h2>";
+    }
+}
+?>
